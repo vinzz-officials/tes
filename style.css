@@ -74,3 +74,6 @@ button:hover {
   font-weight: bold;
   text-align: center;
 }
+#notifikasi.show {
+  opacity: 1;
+}
