@@ -1,0 +1,44 @@
+<!-- overlay-frag.html -->
+<link rel="stylesheet" href="https://raw.githubusercontent.com/vinzz-officials/tes/main/overlay.css">
+<style>
+  /* fallback: jika lu ga mau css terpisah, pindah semua css di sini */
+</style>
+
+<div class="overlay" id="overlay">
+  <div class="panel-wrap" id="panelWrap" style="transform: translate(20px, 20px);">
+    <div class="panel" id="panel" role="dialog" aria-label="overlay-gui">
+      <div class="hdr" id="hdr">
+        <div class="left">
+          <div class="title">Overlay GUI</div>
+          <div class="meta">Draggable • Tabs • Swipe actions</div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="inspectBtn" title="Inspect element">🔍</button>
+          <button class="btn" id="addTabBtn" title="Add tab">➕ Tab</button>
+          <button class="btn" id="saveBtn" title="Save">💾</button>
+          <button class="btn" id="minBtn" title="Minimize">—</button>
+          <button class="btn" id="closeBtn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <div class="tabs" id="tabs" role="tablist" aria-label="tabs"></div>
+
+      <div class="body" id="body" aria-live="polite"></div>
+
+      <div class="editor" id="editor">
+        <input id="labelInput" class="input" placeholder="Label (mis. Refresh)" />
+        <select id="actionType" class="select">
+          <option value="alert">Alert</option>
+          <option value="log">Console.log</option>
+          <option value="copy">Copy text</option>
+          <option value="custom">Custom JS</option>
+        </select>
+        <button class="btn" id="addBtn">Add</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- refer ke overlay.js yang ada di repo (raw URL akan dipakai saat inject) -->
+<script src="overlay.js"></script>
